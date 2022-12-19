@@ -1,0 +1,65 @@
+<div>
+  <p>
+    <mat-form-field appearance="legacy">
+      <mat-label>Name:</mat-label>
+      <input matInput matInput [formControl]="req" placeholder="Placeholder" />
+      <mat-error *ngIf="req.invalid">{{error()}}</mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="standard">
+      <mat-label>Date:</mat-label>
+      <input
+        matInput
+        type="date"
+        matInput
+        [formControl]="req"
+        placeholder="Placeholder"
+      />
+      <mat-error *ngIf="req.invalid">{{error()}}</mat-error>
+    </mat-form-field>
+  </p>
+
+  <mat-form-field appearance="standard">
+    <mat-label>Applied For</mat-label>
+    <mat-select matInput [formControl]="req" required>
+      <mat-option value="option">Applied For</mat-option>
+    </mat-select>
+    <mat-error *ngIf="req.invalid">{{error()}}</mat-error>
+  </mat-form-field>
+
+  <div class="example-container">
+    <mat-form-field appearance="standard">
+      <mat-label>Enter your email</mat-label>
+      <input
+        matInput
+        placeholder="pat@example.com"
+        [formControl]="email"
+        required
+      />
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
+</div>
+<div>
+  <br />
+  <input
+    type="file"
+    class="file-input"
+    (change)="onFileSelected($event)"
+    #fileUpload
+  />
+  <br />
+  <div class="file-upload">
+    {{fileName || "Upload CV"}}
+
+    <button
+      mat-mini-fab
+      color="primary"
+      class="upload-btn"
+      (click)="fileUpload.click()"
+    >
+      <mat-icon>attach_file</mat-icon>
+    </button>
+  </div>
+</div>
